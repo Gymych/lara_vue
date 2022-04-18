@@ -4,6 +4,7 @@
         <InnerPostComponent></InnerPostComponent>
         Cya!
         <div>Name: {{name}}</div>
+        <div>Computed: {{computeSmthng}}</div>
         <button @click="sayHi">Hi</button>
     </div>
 </template>
@@ -23,6 +24,12 @@ export default {
     methods: {
         sayHi(){
             console.log('Hi')
+        }
+    },
+
+    computed: {
+        computeSmthng() {
+            return this.name + ' Computed data'
         }
     },
 
