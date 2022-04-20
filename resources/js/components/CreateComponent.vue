@@ -25,7 +25,6 @@ export default {
             name: null,
             age: null,
             job: null,
-
         }
     },
 
@@ -33,7 +32,7 @@ export default {
         addPerson() {
             axios.post('/api/people', {name: this.name, age: this.age, job: this.job})
                 .then(res => {
-                    console.log(res);
+                    this.$parent.$refs.index.getPeople()
                     this.name = null;
                     this.age = null;
                     this.job = null;

@@ -5405,7 +5405,8 @@ __webpack_require__.r(__webpack_exports__);
         age: this.age,
         job: this.job
       }).then(function (res) {
-        console.log(res);
+        _this.$parent.$refs.index.getPeople();
+
         _this.name = null;
         _this.age = null;
         _this.job = null;
@@ -5535,8 +5536,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "InnerPostComponent"
+  name: "InnerPostComponent",
+  props: ['obj']
 });
 
 /***/ }),
@@ -5580,11 +5584,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "PostComponent",
+  data: function data() {
+    return {
+      obj: {
+        color: "yell",
+        number: "14",
+        isPublished: false
+      }
+    };
+  },
   components: {
     InnerPostComponent: _InnerPostComponent__WEBPACK_IMPORTED_MODULE_0__["default"],
     CreateComponent: _CreateComponent__WEBPACK_IMPORTED_MODULE_1__["default"],
@@ -28716,7 +28730,23 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("\n    InnerOne..\n")])
+  return _c("div", [
+    _c("div", [_vm._v("Color: " + _vm._s(_vm.obj.color))]),
+    _vm._v(" "),
+    _c("div", [
+      _vm._v(
+        "Number: " +
+          _vm._s(_vm.obj.number > 10 ? "More then 10" : "Less then 10")
+      ),
+    ]),
+    _vm._v(" "),
+    _c("div", [
+      _vm._v(
+        "Is published: " +
+          _vm._s(_vm.obj.isPublished ? "Published" : "Not published")
+      ),
+    ]),
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -28743,7 +28773,13 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    [_c("CreateComponent"), _vm._v(" "), _c("IndexComponent")],
+    [
+      _c("CreateComponent", { ref: "create" }),
+      _vm._v(" "),
+      _c("IndexComponent", { ref: "index" }),
+      _vm._v(" "),
+      _c("InnerPostComponent", { attrs: { obj: _vm.obj } }),
+    ],
     1
   )
 }

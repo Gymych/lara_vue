@@ -1,7 +1,8 @@
 <template>
     <div>
-        <CreateComponent></CreateComponent>
-        <IndexComponent></IndexComponent>
+        <CreateComponent ref="create"></CreateComponent>
+        <IndexComponent ref="index"></IndexComponent>
+        <InnerPostComponent :obj="obj"></InnerPostComponent>
 <!--        <table class="table">-->
 <!--            <thead>-->
 <!--            <tr>-->
@@ -30,7 +31,15 @@ import IndexComponent from "./IndexComponent";
 export default {
     name: "PostComponent",
 
-
+    data() {
+        return {
+            obj: {
+                color:"yell",
+                number:"14",
+                isPublished:false
+            }
+        }
+    },
 
     components: {
         InnerPostComponent,
